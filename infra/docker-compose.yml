@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  main:
+    container_name: main
+    image: ci-cd-practice
+    ports:
+      - 3000:80
+
+  server:
+    container_name: server
+    image: ci-cd-practice-server
+    ports:
+      - 3001:3001
