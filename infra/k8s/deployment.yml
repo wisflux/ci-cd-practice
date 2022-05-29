@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-practice-server
+spec:
+  selector:
+    matchLabels:
+      app: ci-cd-practice-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ci-cd-practice-server
+    spec:
+      containers:
+        - name: ci-cd-practice-server
+          image: docker.io/library/ci-cd-practice-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-practice-webapp
+spec:
+  selector:
+    matchLabels:
+      app: ci-cd-practice-webapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ci-cd-practice-webapp
+    spec:
+      containers:
+        - name: ci-cd-practice-webapp
+          image: docker.io/library/ci-cd-practice
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
